@@ -1,0 +1,24 @@
+.find-tracks-body {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    padding-bottom: 8vh;
+}
+
+.find-tracks-headings {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+
+}
+
+.find-tracks-heading {
+    font-size: 5vw;
+    color: #082C34;
+    font-weight: 500;
+    line-height: 12vh;
+}
+
+.find-tracks-subheading {
+    font-size: 2vw;
+    color: #082C34;
+}

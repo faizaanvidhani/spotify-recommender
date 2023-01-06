@@ -1,0 +1,30 @@
+.top-tracks-body {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    padding-bottom: 8vh;
+}
+
+.top-tracks-headings {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+
+}
+
+.top-tracks-heading {
+    font-size: 5vw;
+    color: #082C34;
+    font-weight: 500;
+    line-height: 12vh;
+}
+
+.top-tracks-subheading {
+    font-size: 2vw;
+    color: #082C34;
+}
+
+.top-tracks-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}

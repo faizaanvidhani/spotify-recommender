@@ -1,0 +1,64 @@
+.blue {
+    background-color: #082C34;
+    min-height: 100vh;
+}
+
+.home-elements {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-top: 10vh;
+    padding-left: 7.5vw;
+    padding-right: 30vw;
+}
+
+.home-title {
+    font-weight: 700;
+    font-size: 8vw;
+    text-transform: uppercase;
+}
+
+.home-body {
+    font-weight: 400;
+    font-size: 2.6vw;
+}
+
+.home-button {
+    height: 10vh;
+    width: 24vw;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #FFFFFF;
+}
+
+.spotify-logo {
+    height: 55px;
+    width: 55px;
+}
+.home-button-text {
+    color: #082C34;
+    text-transform: uppercase;
+    line-height: 6vh;
+    font-size: 2.6vw;
+    font-weight: 500;
+}
+
+.home-button-link {
+    text-decoration: none;
+
+}
+
+.home-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}

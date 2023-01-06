@@ -1,0 +1,25 @@
+.search-bar-button-map {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-bar-button {
+    display: flex;
+    flex-direction: column;
+}
+
+.basic-single {
+    height: 4vh;
+    width: 28vw;
+}
+
+.search-button {
+    height: 8vh;
+}
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:active {
+    transform: scale(0.95);
+}

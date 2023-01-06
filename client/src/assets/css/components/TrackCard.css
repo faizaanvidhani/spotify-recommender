@@ -1,0 +1,42 @@
+.track-card {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.track-card-info {
+    background-color: #082C34;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 15rem;
+    height: 18rem;
+    margin-top: -1rem;
+}
+
+.track-card-heading {
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.track-card-subheading {
+    font-size: 1.5vw;
+    font-style: italic;
+}
+
+.track-features {
+    padding-top: 1rem;
+    text-transform: uppercase;
+    line-height: 2.5vh;
+}
+
+.track-card-image {
+
+}
+
+.track-image {
+    border-radius: 10px;
+    height: 19rem;
+    width: 19rem;
+}
