@@ -1,0 +1,19 @@
+.css-yafthl-MuiSlider-markLabel {
+    color: #ffffff !important;
+}
+
+.css-1eoe787-MuiSlider-markLabel {
+    color: #ffffff !important;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+}
+
+.slider-attribute {
+    color: #FFFFFF;
+    font-size: 1.2vw;
+}

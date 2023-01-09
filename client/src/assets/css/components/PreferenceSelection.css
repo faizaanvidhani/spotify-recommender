@@ -1,0 +1,58 @@
+.preference-blue-box {
+    margin-top: 5vh;;
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.preference-box-heading {
+    font-size: 2vw;
+    padding-bottom: 2rem;
+    color: #ffffff;
+}
+
+.preference-box-body-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.preference-box-body {
+    font-size: 1.5vw;
+    width: 32vw;
+    line-height: 1.5rem;
+    color: #ffffff;
+    padding-bottom: 3vh;
+}
+
+.preference-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.preference-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: -4vh;
+
+}
+.preference-button {
+    background-color: #FFFFFF;
+    color: #082C34;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.2vw;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.button-active {
+    background-color: #afb5c4;
+
+}
+
+.preference-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}

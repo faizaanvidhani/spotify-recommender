@@ -1,0 +1,18 @@
+.section {
+    margin-top: 5vh;;
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.section-heading {
+    font-size: 2vw;
+    padding-bottom: 2rem;
+    color: #ffffff;
+}
+
+.section-body {
+    font-size: 1.5vw;
+    color: #ffffff;
+    line-height: 1.6rem;
+}

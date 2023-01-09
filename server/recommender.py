@@ -59,6 +59,7 @@ class Recommender:
             tracks = sp.album_tracks(album["id"], limit=50)["items"]
             for track in tracks:
                 track_info = {}
+                track_info["ranking"] = 0
                 track_info["id"] = track["id"]
                 track_info["title"] = track["name"]
                 track_info["artist"] = track["artists"][0]["name"]
@@ -79,14 +80,14 @@ class Recommender:
         """
         feats = sp.audio_features(track_id)[0]
         return {
-                "danceability": feats['danceability'],
-                "energy": feats['energy'],
-                "speechiness": feats['speechiness'],
-                "acousticness": feats['acousticness'],
-                "instrumentalness": feats['instrumentalness'],
-                "liveness": feats["liveness"],
-                "valence": feats["valence"]
-            }
+            "acousticness": feats['acousticness'],
+            "danceability": feats['danceability'],
+            "energy": feats['energy'],
+            "instrumentalness": feats['instrumentalness'],
+            "liveness": feats["liveness"],
+            "speechiness": feats['speechiness'],
+            "valence": feats["valence"]
+        }
     
     
     def calculate_euclidean_distance(self, user_tracks_info, country_tracks_info):
@@ -103,7 +104,37 @@ class Recommender:
                 dist += np.linalg.norm(point_1 - point_2)
             country_tracks_info[i]["distance"] = dist
         sorted_country_tracks = sorted(country_tracks_info, key=lambda d:d["distance"])
-        return sorted_country_tracks
+        tracks_len = min(len(sorted_country_tracks), 10)
+
+        rank = 1
+        for track in sorted_country_tracks:
+            track["ranking"] = rank
+            rank += 1
+        return sorted_country_tracks[:tracks_len]
+    
+    def knn(self, attributes, country_tracks_info):
+        """
+        Input: 
+            -attributes: [acousticness, danceability, energy, instrumentalness, liveness, speechiness, valence]
+            -country_tracks_info: list of dictionaries, each containing the track id, 
+            title, artist, image, preview_url, and audio features for a particular track
+        Output:
+
+        """
+        dist = 0
+        normalized_attributes =[x / 100 for x in attributes]
+        point_1 = np.array(normalized_attributes)
+        for i in range(len(country_tracks_info)):
+            point_2 = np.array(list(country_tracks_info[i]["features"].values()))
+            dist = np.linalg.norm(point_1 - point_2)
+            country_tracks_info[i]["distance"] = dist
+        sorted_country_tracks = sorted(country_tracks_info, key=lambda d:d["distance"])
+        tracks_len = min(len(sorted_country_tracks), 10)
+        rank = 1
+        for track in sorted_country_tracks:
+            track["ranking"] = rank
+            rank += 1
+        return sorted_country_tracks[:tracks_len]
 
 
 

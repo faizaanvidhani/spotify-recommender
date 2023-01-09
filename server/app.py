@@ -79,14 +79,26 @@ def search(country):
     except:
         print("user not logged in")
         return redirect("/")
-    
-
     sp = spotipy.Spotify(auth=token_info["access_token"])
 
     user_tracks_scores = recommender.get_user_top_tracks(sp)
     country_tracks_scores = recommender.get_country_tracks(sp, country)
     sorted_distances = recommender.calculate_euclidean_distance(user_tracks_scores, country_tracks_scores)
     return jsonify(sorted_distances)
+
+@app.route('/search/manual-input/results/<string:country>', methods =['POST'])
+def manual_input_results(country):
+    try:
+        token_info = get_token()
+    except:
+        print("user not logged in")
+        return redirect("/")
+    sp = spotipy.Spotify(auth=token_info["access_token"])
+    attributes = request.json
+    country_tracks_scores = recommender.get_country_tracks(sp, country)
+    result = recommender.knn(attributes, country_tracks_scores)
+    return jsonify(result)
+
 
 def get_token():
     token_info = session.get(TOKEN_INFO, None)

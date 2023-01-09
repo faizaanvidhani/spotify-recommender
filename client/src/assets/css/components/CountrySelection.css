@@ -1,0 +1,44 @@
+.search-bar-map {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blue-box {
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.box-heading {
+    font-size: 2vw;
+    padding-bottom: 2rem;
+    color: #ffffff;
+}
+
+.box-body {
+    margin-top: 3vh;
+    font-size: 1.5vw;
+    width: 32vw;
+    line-height: 1.5rem;
+    color: #ffffff;
+}
+
+.search-bar-button {
+    display: flex;
+    flex-direction: column;
+}
+
+.basic-single {
+    width: 32vw;
+}
+
+.search-button {
+    height: 8vh;
+}
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:active {
+    transform: scale(0.95);
+}

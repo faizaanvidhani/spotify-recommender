@@ -1,0 +1,45 @@
+.search-section {
+    margin-top: 5vh;;
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.search-heading {
+    font-size: 2.4vw;
+    padding-bottom: 2rem;
+    color: #ffffff;
+}
+
+.search-heading-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-button {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20vw;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.search-button-text {
+    text-transform: uppercase;
+    font-size: 3vw;
+    font-weight: 500;
+}
+
+.find-icon {
+    height: 7vh;
+}
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding-top: 3rem;
+}

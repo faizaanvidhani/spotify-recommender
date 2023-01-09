@@ -5,8 +5,10 @@
 }
 
 .track-card-info {
-    background-color: #082C34;
-    color: #FFFFFF;
+    /* background-color: #082C34;
+    color: #FFFFFF; */
+    background-color: #FFFFFF;
+    color: #082C34;
     font-family: 'Roboto', sans-serif;
     padding: 2rem;
     border-radius: 10px;
