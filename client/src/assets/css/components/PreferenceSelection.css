@@ -60,7 +60,11 @@
     font-size: 1.2vw;
     border-radius: 10px;
     height: 5vh;
+}
 
+.search-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .spinner {
