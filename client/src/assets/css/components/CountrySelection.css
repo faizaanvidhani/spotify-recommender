@@ -1,21 +1,22 @@
-.search-bar-map {
-    display: flex;
-    justify-content: space-between;
-}
-
-.blue-box {
+.country-selection-container {
     background-color: #082C34;
     padding: 2rem;
     border-radius: 10px;
 }
 
-.box-heading {
+.country-selection-left-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.country-selection-title {
     font-size: 2vw;
     padding-bottom: 2rem;
     color: #ffffff;
 }
 
-.box-body {
+.country-selection-text {
     margin-top: 3vh;
     font-size: 1.5vw;
     width: 32vw;
@@ -23,22 +24,6 @@
     color: #ffffff;
 }
 
-.search-bar-button {
-    display: flex;
-    flex-direction: column;
-}
-
-.basic-single {
+.dropdown-item {
     width: 32vw;
-}
-
-.search-button {
-    height: 8vh;
-}
-.search-button:hover {
-    cursor: pointer;
-}
-
-.search-button:active {
-    transform: scale(0.95);
 }

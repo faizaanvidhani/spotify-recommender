@@ -1,4 +1,4 @@
-.top-tracks-body {
+.top-tracks-page-body {
     font-family: 'Roboto', sans-serif;
     padding-left: 8vw;
     padding-right: 8vw;
@@ -23,7 +23,7 @@
     color: #082C34;
 }
 
-.top-tracks-list {
+.user-tracks {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;

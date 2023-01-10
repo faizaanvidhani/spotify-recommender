@@ -9,16 +9,13 @@ import { useNavigate } from 'react-router';
 export default function Header() {
     const logOut = async () => {
         try {
-            const response = await axios.get('/logout');
-            console.log("SUCCESS", response);
+            await axios.get('/logout');
             navigate('/')
         } catch (error) {
             console.log(error)
         }
-    };
-
-
-    const navigate = useNavigate();
+    }
+    const navigate = useNavigate()
     return (
         <div className="header">
             <div className="header-name">

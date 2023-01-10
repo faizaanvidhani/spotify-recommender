@@ -22,12 +22,12 @@ export default function TopTracks() {
     return (
         <div>
             <Header/>
-            <div className="top-tracks-body">
+            <div className="top-tracks-page-body">
                 <div className="top-tracks-headings">
                     <p className="top-tracks-heading">Top Tracks</p>
                     <p className="top-tracks-subheading">Take a look at your current top tracks.</p>
                 </div>
-                <div className="top-tracks-list">
+                <div className="user-tracks">
                     {userTracks.map((item, index) => (
                         <TrackCard 
                             key={index} 

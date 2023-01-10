@@ -1,10 +1,10 @@
-// import * as React from 'react';
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../../assets/css/components/DiscreteSlider.css';
 
+// specifies the ends of the slider spectrum
 const marks = [
   {
     value: 0,
@@ -16,12 +16,12 @@ const marks = [
   }
 ];
 
+// specifies the styling of the slider
 const theme = createTheme({
   palette: {
     primary: {
-      // Purple and green play nicely together.
       main: '#FFFFFF',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
 });
@@ -57,5 +57,5 @@ export default function DiscreteSlider(props) {
         </ThemeProvider>
       </Box>
     </div>
-  );
+  )
 }

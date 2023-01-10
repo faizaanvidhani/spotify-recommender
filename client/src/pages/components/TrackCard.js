@@ -26,7 +26,5 @@ export default function TrackCard(props) {
                 <AudioPlayer className="preview-audio-button" url={props.preview_url}/>
             </div>
         </div>
-       
-      
       )
     }

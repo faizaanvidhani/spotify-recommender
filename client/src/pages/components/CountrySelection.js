@@ -3,29 +3,31 @@ import Select from 'react-select';
 import countries from '../../assets/searchCountries.json';
 import '../../assets/css/components/CountrySelection.css';
   
-export default function CountrySelection(props) {
+export default function CountrySelection({ setResults, setCountryCode }) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [selectedCountry, setSelectedCountry] = useState(null);
 
     useEffect(() => {
       if (!selectedOption) {
-        setSelectedCountry("Earth")
-        props.setCountryCode(null)
-        props.setResults([]);
+        setSelectedCountry(null)
+        setCountryCode(null)
       } else {
+        // an option is a dictionary where {value: countryCode, label: country}
         setSelectedCountry(selectedOption["label"])
-        props.setCountryCode(selectedOption["value"])
+        setCountryCode(selectedOption["value"])
       }
+      // resets search results when a different country is selected in the dropdown menu
+      setResults([]);
 
   }, [selectedOption]);
 
     return (
-      <div className="blue-box">
-        <p className="box-heading">Country Selection</p>
-        <div className="search-bar-map">
+      <div className="country-selection-container">
+        <p className="country-selection-title">Country Selection</p>
+        <div className="country-selection-left-container">
           <div>
             <Select
-              className="basic-single"
+              className="dropdown-item"
               classNamePrefix="select"
               defaultValue={countries[0].name}
               isClearable={true}
@@ -36,19 +38,18 @@ export default function CountrySelection(props) {
               onChange={setSelectedOption}
             />
               {
-                selectedCountry != "Earth" ?
-                <p className="box-body">
+                selectedCountry !== null ?
+                <p className="country-selection-text">
                   Great choice! You have selected {selectedCountry}. Continue scrolling to select your music
                   preferences.
                 </p> : 
-                <p className="box-body">
+                <p className="country-selection-text">
                 Pick any country from around the world!
               </p>
               }
-              
           </div>
-           <iframe key={selectedCountry} width="500vw" height="350vh" style={{border:0}} loading="lazy" src={`https://www.google.com/maps/embed/v1/search?q=${selectedCountry == null ? "United States" : selectedCountry}&key=AIzaSyDNCKEDlCwHE_cO1wcham3rjCM9Ootz_zg&zoom=5`}></iframe>
+           <iframe title="map" key={selectedCountry} width="500vw" height="350vh" style={{border:0}} loading="lazy" src={`https://www.google.com/maps/embed/v1/search?q=${selectedCountry == null ? "United States" : selectedCountry}&key=AIzaSyDNCKEDlCwHE_cO1wcham3rjCM9Ootz_zg&zoom=5`}></iframe>
         </div>
       </div>
-    );
-  };
+    )
+  }
