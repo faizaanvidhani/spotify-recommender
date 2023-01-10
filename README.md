@@ -11,5 +11,5 @@ Commands for setting up this application in a virtual environment:
 
 2. Starting the web application
 
-  * To start the client: Navigate to the client directory. Run ```npm run start-client```
-  * To start the server: Navigate to the server directory. Run ```flask run```. Alternatively, navigate to the client directory. Run ```npm run start-server```
+  * To start the client: Navigate to the client directory. Execute ```npm run start-client```
+  * To start the server: Navigate to the server directory. Execute ```flask run```. Alternatively, navigate to the client directory. Execute ```npm run start-server```
