@@ -9,4 +9,7 @@ Commands for setting up this application in a virtual environment:
   * To activate virtual env: ```source <name-of-virtual-environment>/bin/activate```
   * To install dependencies: ```pip install -r requirements.txt```
 
-2. To start the web application: ```flask run```
+2. Starting the web application
+
+  * To start the client: Navigate to the client directory. Run ```npm run start-client```
+  * To start the server: Navigate to the server directory. Run ```flask run```. Alternatively, navigate to the client directory. Run ```npm run start-server```
