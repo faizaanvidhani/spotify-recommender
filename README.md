@@ -16,5 +16,6 @@ Instructions for setting up and running this web application:
 
 2. Starting the web application
 
+  * Be sure that frontend dependencies have been installed. To install frontend dependencies, execute ```npm install``` in the client directory.
   * To start the client: Navigate to the client directory. Execute ```npm run start-client```
   * To start the server: Navigate to the server directory. Execute ```flask run```. Alternatively, navigate to the client directory. Execute ```npm run start-server```
