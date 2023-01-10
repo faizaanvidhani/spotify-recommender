@@ -4,6 +4,8 @@ Recommends the latest tracks from any country around the world using the KNN alg
 
 <img src="./spotify-recommender.gif" width="1000vw" height="500vh"/>
 
+I wanted to find songs that I liked that were popular in other countries. So, I built a web app using Flask (backend) and React (frontend). 
+
 Instructions for setting up and running this web application:
 
 1. Clone the repository. Setup and activate a virtual environment in the server directory. Install dependencies.
