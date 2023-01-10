@@ -4,8 +4,6 @@ Recommends the latest tracks from any country around the world using the KNN alg
 
 <img src="./spotify-recommender.gif" width="1000vw" height="500vh"/>
 
-![Alt Text](https://github.com/faizaanvidhani/spotify-recommender/blob/main/spotify-recommender.gif)
-
 Instructions for setting up and running this web application:
 
 1. Clone the repository. Setup and activate a virtual environment in the server directory. Install dependencies.
