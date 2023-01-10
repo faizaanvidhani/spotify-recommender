@@ -1,4 +1,5 @@
-# spotify-recommender
+# Diversify: A Spotify Recommender
+
 Recommends the latest tracks from any country around the world using the KNN algorithm.
 
 Commands for setting up this application in a virtual environment:
