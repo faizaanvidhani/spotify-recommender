@@ -3,7 +3,7 @@ import '../../assets/css/components/Results.css';
   
 export default function Results(props) {
     return (
-      <div ref={props.resultsRef} className="section">
+      <div className="section">
         <p className="results-heading">Results</p>
         <div className="results">
             {props.results.map((item, index) => (

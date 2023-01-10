@@ -36,7 +36,7 @@ export default function DiscreteSlider(props) {
 
   useEffect(() => {
     props.updateValue(attributeValue);
-  }, [attributeValue]);
+  }, [props, attributeValue]);
   
   return (
     <div className="slider">
@@ -46,7 +46,7 @@ export default function DiscreteSlider(props) {
         <Slider
           key={props.category}
           aria-label="Always visible"
-          defaultValue={attributeValue}
+          value={attributeValue}
           getAriaValueText={valuetext}
           onChange={(_, value) => setAttributeValue(value)}
           step={1}

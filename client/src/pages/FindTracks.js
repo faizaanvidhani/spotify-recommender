@@ -84,9 +84,11 @@ export default function FindTracks() {
                 { countryCode == null ?
                     null :
                     <PreferenceSelection 
+                    audio={audioFeaturePreferences}
                     fetchPersonalizedResults={fetchPersonalizedResults} 
                     fetchManualInputAudioFeaturesResults={fetchManualInputAudioFeaturesResults}
                     loading={loading}
+                    resultsRef={resultsRef} // scrolls to the bottom of the div above the results div to circumvent issue with scrolling to results div due to header
                     setAudioFeaturePreferences={setAudioFeaturePreferences}
                     setSelectedPreference={setSelectedPreference}
                     topTracksData={topTracksData} />
@@ -95,7 +97,6 @@ export default function FindTracks() {
                     null :
                     <Results 
                     results={results}
-                    resultsRef={resultsRef}
                     selectedPreference={selectedPreference} />
                 }
             </div>

@@ -13,6 +13,7 @@ export default function PreferenceSelection(props) {
 
     // handles toggling of CURRENT TOP TRACKS button
     const handleButtonX = () => {
+        console.log(props.audio)
         if (!buttonXActive) {
             setPreference("CURRENT_TOP_TRACKS");
             setPreferenceMessage("Nice! You have indicated that you want to use your current top tracks.")
@@ -24,6 +25,7 @@ export default function PreferenceSelection(props) {
 
     // handles toggling of MANUALLY INPUT FEATURES button
     const handleButtonY = () => {
+        console.log(props.audio)
         if (!buttonYActive) {
             setPreference("MANUALLY_INPUT_AUDIO_FEATURES");
             setPreferenceMessage("Awesome! You have indicated that you want to manually input audio features.")
@@ -40,7 +42,7 @@ export default function PreferenceSelection(props) {
             setPreferenceMessage(null);
             props.setSelectedPreference(null);
         }
-      }, [buttonXActive, buttonYActive]);
+      }, [props, buttonXActive, buttonYActive]);
 
     const handleSearch = () => {
         if (preference === "CURRENT_TOP_TRACKS") {
@@ -80,7 +82,7 @@ export default function PreferenceSelection(props) {
         <div>
 
         <div className="preference-row">
-            <div>
+            <div ref={props.resultsRef}>
                 {
                 preferenceMessage != null ?
                 <p className="preference-box-body">
