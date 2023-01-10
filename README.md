@@ -2,7 +2,7 @@
 
 Recommends the latest tracks from any country around the world using the KNN algorithm.
 
-Commands for setting up this application in a virtual environment:
+Instructions for setting up and running this web application:
 
 1. Clone the repository. Setup and activate a virtual environment in the server directory. Install dependencies.
 
