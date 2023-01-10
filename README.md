@@ -2,6 +2,8 @@
 
 Recommends the latest tracks from any country around the world using the KNN algorithm.
 
+![Alt Text](https://github.com/faizaanvidhani/spotify-recommender/blob/main/preview-gif.mov)
+
 Instructions for setting up and running this web application:
 
 1. Clone the repository. Setup and activate a virtual environment in the server directory. Install dependencies.
