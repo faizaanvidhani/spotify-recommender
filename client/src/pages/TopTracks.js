@@ -10,7 +10,7 @@ export default function TopTracks() {
     useEffect(() => {
         async function fetchUserTracks() {
             try {
-                const response = await axios.get('/getTracks');
+                const response = await axios.get('/user-top-tracks');
                 setUserTracks(response.data);
             } catch (error) {
                 console.log(error);

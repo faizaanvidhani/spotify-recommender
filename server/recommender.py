@@ -2,35 +2,20 @@ import numpy as np
 
 class Recommender:
     """
-    Recommender class. Contains methods for finding tracks from new album releases in a particular 
-    country similar to a given user's top tracks.
+    Finds tracks from new album releases in a particular country similar to a user's top tracks
+    or manually-inputted audio features.
     """
-
-    def main(self, sp):
-        """
-        Executes logic for finding tracks from new album releases in a particular country similar to a
-        user's top tracks. Returns dictionary mapping track IDs to distances from user's top tracks in 
-        ascending order.
-        """
-        top_tracks_ids, top_tracks_info = sp.current_user_top_tracks(limit=10)
-        user_tracks_scores = self.compute_user_scores(sp, top_tracks_ids, top_tracks_info)
-
-        country_tracks_ids, country_tracks_info = country_tracks_info = self.get_country_tracks(sp)
-        country_tracks_scores = self.compute_country_scores(sp, country_tracks_ids, country_tracks_info)
-
-        sorted_distances = self.calculate_euclidean_distance(user_tracks_scores, country_tracks_scores)
-        return sorted_distances
-
 
     def get_user_top_tracks(self, sp):
         """
-        Returns the following:
-        1) list of track IDs for current top 10 tracks for a particular user
-        2) list of dictionaries, each containing the ranking, track id, title, artist, image, 
-        preview_url, and audio features for a particular track.
+        Fetches user's current top tracks.
+        Input:
+            -sp: SpotifyOAuth object
+        Output:
+            -top_tracks_info: list of dictionaries, each containing the ranking, track id, title, 
+            artist, image, preview_url, and audio features for a particular track.
         """
         user_tracks_info = sp.current_user_top_tracks(limit=10)
-
         top_tracks_info = []
         track_ranking = 0
         for track in user_tracks_info["items"]:
@@ -48,12 +33,15 @@ class Recommender:
 
     def get_country_tracks(self, sp, country_code):
         """
-        Returns the following:
-        1) list of track IDs for top 20 latest album releases for a given country
-        2) list of dictionaries, each containing the track id, title, artist, image, 
-        preview_url, and audio features for a particular track.
+        Fetches the latest tracks in a particular country.
+        Input:
+            -sp: SpotifyOAuth object
+            -country_code: ISO 3166-1 alpha-2 country code.
+        Output:
+            -country_tracks_info: list of dictionaries, each containing the ranking, track id, title, 
+            artist, image, preview_url, and audio features for a particular track.
         """
-        album_releases = sp.new_releases(country_code, limit=10)["albums"]["items"]
+        album_releases = sp.new_releases(country_code, limit=20)["albums"]["items"]
         country_tracks_info = []
         for album in album_releases:
             tracks = sp.album_tracks(album["id"], limit=50)["items"]
@@ -67,35 +55,41 @@ class Recommender:
                 track_info["preview_url"] = track["preview_url"]
                 track_info["features"] = self.find_audio_features(sp, track["id"])
                 country_tracks_info.append(track_info)
-
         return country_tracks_info
-
-
 
     def find_audio_features(self, sp, track_id):
         """
-        Computes the danceability, energy, speechiness, acousticness, instrumentalness, liveness, and 
-        valence scores for a list of tracks. Populates each dictionary in the tracks_info list with a
-        mapping of 'features' to a dictionary of the audio features for that particular track. 
+        Computes the danceability, energy, speechiness, acousticness, liveness, and 
+        valence scores for a particular track. 
+        Input:
+            -sp: SpotifyOAuth object
+            -track_id: track_id that corresponds to a particular track
+        Output:
+            -dictionary mapping audio features to their respective scores
         """
         feats = sp.audio_features(track_id)[0]
         return {
             "acousticness": feats['acousticness'],
             "danceability": feats['danceability'],
             "energy": feats['energy'],
-            "instrumentalness": feats['instrumentalness'],
             "liveness": feats["liveness"],
             "speechiness": feats['speechiness'],
             "valence": feats["valence"]
         }
     
-    
-    def calculate_euclidean_distance(self, user_tracks_info, country_tracks_info):
+    def find_similar_tracks(self, user_tracks_info, country_tracks_info):
         """
-        Returns mapping of track IDs to distances from user's top track preferences in
-        ascending order.
+        Finds the 10 tracks most similar to a user's current top tracks.
+        Input:
+            -user_tracks_info: list of dictionaries, each containing the ranking, track id, title, 
+            artist, image, preview_url, and audio features for a particular track.
+            -country_tracks_info: list of dictionaries, each containing the track id, 
+            title, artist, image, preview_url, audio features, and DISTANCE for a particular track
+        Output:
+            -sorted_country_tracks: ordered list of dictionaries of size 10, each containing the 
+            track id, title, artist, image, preview_url, audio features, distance, and RANKING 
+            for a particular track
         """
-
         for i in range(len(country_tracks_info)):
             dist = 0
             point_1 = np.array(list(country_tracks_info[i]["features"].values()))
@@ -103,23 +97,21 @@ class Recommender:
                 point_2 = np.array(list(user_tracks_info[j]["features"].values()))
                 dist += np.linalg.norm(point_1 - point_2)
             country_tracks_info[i]["distance"] = dist
-        sorted_country_tracks = sorted(country_tracks_info, key=lambda d:d["distance"])
-        tracks_len = min(len(sorted_country_tracks), 10)
-
-        rank = 1
-        for track in sorted_country_tracks:
-            track["ranking"] = rank
-            rank += 1
-        return sorted_country_tracks[:tracks_len]
+        return self.sort_tracks(country_tracks_info)
     
     def knn(self, attributes, country_tracks_info):
         """
+        Finds the 10 tracks most similar to a particular attributes list. Computes the similarity 
+        score between the audio features list of a particular track and the inputted attributes list 
+        for all tracks.
         Input: 
-            -attributes: [acousticness, danceability, energy, instrumentalness, liveness, speechiness, valence]
+            -attributes: [acousticness, danceability, energy, liveness, speechiness, valence]
             -country_tracks_info: list of dictionaries, each containing the track id, 
-            title, artist, image, preview_url, and audio features for a particular track
+            title, artist, image, preview_url, and AUDIO FEATURES for a particular track
         Output:
-
+            -sorted_country_tracks: ordered list of dictionaries of size 10, each containing the 
+            track id, title, artist, image, preview_url, audio features, distance, and RANKING 
+            for a particular track
         """
         dist = 0
         normalized_attributes =[x / 100 for x in attributes]
@@ -128,6 +120,22 @@ class Recommender:
             point_2 = np.array(list(country_tracks_info[i]["features"].values()))
             dist = np.linalg.norm(point_1 - point_2)
             country_tracks_info[i]["distance"] = dist
+        return self.sort_tracks(country_tracks_info)
+        
+    def sort_tracks(self, country_tracks_info):
+        """
+        Finds the top 10 tracks most similar to a user's preference. Uses the calculated distances
+        to output an ordered list of of up to 10 dictionaries, where each dictionary corresponds to a 
+        particular track. 
+
+        Input:
+            -country_tracks_info: list of dictionaries, each containing the track id, 
+            title, artist, image, preview_url, audio features, and DISTANCE for a particular track
+        Output:
+            -sorted_country_tracks: ordered list of dictionaries of size 10, each containing the 
+            track id, title, artist, image, preview_url, audio features, distance, and RANKING 
+            for a particular track
+        """
         sorted_country_tracks = sorted(country_tracks_info, key=lambda d:d["distance"])
         tracks_len = min(len(sorted_country_tracks), 10)
         rank = 1

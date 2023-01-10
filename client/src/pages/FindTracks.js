@@ -32,7 +32,7 @@ export default function FindTracks() {
     useEffect(() => {
         async function fetchUserTracks() {
             try {
-                const response = await axios.get('getTracks');
+                const response = await axios.get('/user-top-tracks');
                 setTopTracksData(response.data);
             } catch (error) {
                 console.log(error);
@@ -45,7 +45,7 @@ export default function FindTracks() {
     const fetchPersonalizedResults = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`/search/${countryCode}`);
+            const response = await axios.get(`/search/user-tracks/results/${countryCode}`);
             setResults(response.data);
           } catch (error) {
               console.log(error)
