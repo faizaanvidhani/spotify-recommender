@@ -3,19 +3,21 @@ import axios from 'axios'
 import Header from './components/Header';
 import TrackCard from './components/TrackCard';
 import '../assets/css/TopTracks.css';
-export default function DiscoverTracks() {
 
-    const [topTracksData, setTopTracksData] = useState([])
+export default function TopTracks() {
+    const [userTracks, setUserTracks] = useState([])
 
     useEffect(() => {
-        axios.get('/getTracks').then(response => {
-            setTopTracksData(response.data)
-        }).catch(error => {
-            console.log(error)
-        })
-
+        async function fetchUserTracks() {
+            try {
+                const response = await axios.get('/getTracks');
+                setUserTracks(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchUserTracks();
     }, [])
-
 
     return (
         <div>
@@ -26,7 +28,7 @@ export default function DiscoverTracks() {
                     <p className="top-tracks-subheading">Take a look at your current top tracks.</p>
                 </div>
                 <div className="top-tracks-list">
-                    {topTracksData.map((item, index) => (
+                    {userTracks.map((item, index) => (
                         <TrackCard 
                             key={index} 
                             ranking={item.ranking} 
@@ -40,6 +42,5 @@ export default function DiscoverTracks() {
                 </div>
             </div>
         </div>
-        
     )
 }

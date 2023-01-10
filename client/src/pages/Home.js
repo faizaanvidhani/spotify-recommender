@@ -4,18 +4,20 @@ import '../assets/css/Home.css';
 import SpotifyLogo from "../assets/images/spotify-logo.svg";
 
 export default function Home() {
-
   const [authUrl, setAuthUrl] = useState(null);
 
+  // fetches auth url that directs a user to login with Spotify
   useEffect(() => {
-    axios.get('/login').then(response => {
-        console.log("SUCCESS", response)
-        setAuthUrl(response.data)
-    }).catch(error => {
-      console.log(error)
-    })
-
-}, [])
+    async function fetchAuthUrl() {
+        try {
+            const response = await axios.get('/login');
+            setAuthUrl(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    fetchAuthUrl();
+  }, []);
 
   return (
     <div className="blue">
