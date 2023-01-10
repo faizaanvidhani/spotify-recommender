@@ -17,7 +17,6 @@ export default function TrackCard(props) {
                         <p>Acousticness: {round(props.features["acousticness"])}%</p>
                         <p>Danceability: {round(props.features["danceability"])}%</p>
                         <p>Energy: {round(props.features["energy"])}%</p>
-                        <p>Instrumentalness: {round(props.features["instrumentalness"])}%</p>
                         <p>Liveness: {round(props.features["liveness"])}%</p>
                         <p>Speechiness: {round(props.features["speechiness"])}%</p>
                         <p>Valence: {round(props.features["valence"])}%</p>

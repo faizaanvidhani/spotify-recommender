@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import countries from '../../assets/searchCountries.json';
+import countries from '../../assets/countries.json';
 import '../../assets/css/components/CountrySelection.css';
   
 export default function CountrySelection({ setResults, setCountryCode }) {

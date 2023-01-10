@@ -17,13 +17,12 @@ export default function FindTracks() {
 
     // resets variables when country search bar is cleared
     useEffect(() => {
-       function reset() {
+        if (countryCode == null) {
             setSelectedPreference(null);
             setAudioFeaturePreferences([50, 50, 50, 50, 50, 50, 50]);
             setResults([]);
         }
-        reset();
-      }, [countryCode]);
+    }, [countryCode]);
     
     useEffect(() => {
         resultsRef.current?.scrollIntoView({behavior: 'smooth'});
