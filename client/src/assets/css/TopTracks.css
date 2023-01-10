@@ -27,4 +27,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
 }

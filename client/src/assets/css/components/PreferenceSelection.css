@@ -45,6 +45,31 @@
     padding: 1rem;
     border-radius: 10px;
     text-align: center;
+    height: 5vh;
+    max-width: 12vw;
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-weight: 500;
+    font-size: 1.2vw;
+    border-radius: 10px;
+    height: 5vh;
+
+}
+
+.spinner {
+    height: 7vh;
+}
+
+.find-icon {
+    height: 2rem;
+    padding-left: 0.5rem;
 }
 
 .button-active {

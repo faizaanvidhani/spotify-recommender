@@ -1,19 +1,19 @@
 .track-card {
     display: flex;
     flex-direction: column;
-
 }
 
 .track-card-info {
-    /* background-color: #082C34;
-    color: #FFFFFF; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #FFFFFF;
     color: #082C34;
     font-family: 'Roboto', sans-serif;
     padding: 2rem;
     border-radius: 10px;
     width: 15rem;
-    height: 18rem;
+    min-height: 18rem;
     margin-top: -1rem;
 }
 
@@ -31,6 +31,8 @@
     padding-top: 1rem;
     text-transform: uppercase;
     line-height: 2.5vh;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .track-card-image {

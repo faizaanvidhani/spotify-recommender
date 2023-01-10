@@ -1,0 +1,18 @@
+.section {
+    margin-top: 5vh;;
+    background-color: #082C34;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.results-heading {
+    font-size: 2vw;
+    padding-bottom: 2rem;
+    color: #ffffff;
+    scroll-margin-top: 300px;
+}

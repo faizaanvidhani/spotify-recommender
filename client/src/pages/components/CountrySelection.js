@@ -4,13 +4,14 @@ import countries from '../../assets/searchCountries.json';
 import '../../assets/css/components/CountrySelection.css';
   
 export default function CountrySelection(props) {
-    const [selectedOption, setSelectedOption] = useState({value: "Earth", label: "Earth"});
-    const [selectedCountry, setSelectedCountry] = useState("Earth");
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedCountry, setSelectedCountry] = useState(null);
 
     useEffect(() => {
       if (!selectedOption) {
         setSelectedCountry("Earth")
         props.setCountryCode(null)
+        props.setResults([]);
       } else {
         setSelectedCountry(selectedOption["label"])
         props.setCountryCode(selectedOption["value"])
@@ -46,7 +47,7 @@ export default function CountrySelection(props) {
               }
               
           </div>
-           <iframe key={selectedCountry} width="500" height="350vh" style={{border:0}} loading="lazy" src={`https://www.google.com/maps/embed/v1/search?q=${selectedCountry}&key=AIzaSyDNCKEDlCwHE_cO1wcham3rjCM9Ootz_zg&zoom=5`}></iframe>
+           <iframe key={selectedCountry} width="500vw" height="350vh" style={{border:0}} loading="lazy" src={`https://www.google.com/maps/embed/v1/search?q=${selectedCountry == null ? "United States" : selectedCountry}&key=AIzaSyDNCKEDlCwHE_cO1wcham3rjCM9Ootz_zg&zoom=5`}></iframe>
         </div>
       </div>
     );

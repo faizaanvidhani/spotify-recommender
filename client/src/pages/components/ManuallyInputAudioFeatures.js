@@ -17,17 +17,14 @@ export default function ManuallyInputAudioFeatures(props) {
 
 
     return (
-      <div className="input-blue-box">
-        <p className="input-box-heading">Manually Input Audio Features</p>
-        <div className="input-sliders">
-          <DiscreteSlider updateValue={setAcousticness} category={"Acousticness"}/>
-          <DiscreteSlider updateValue={setDanceability} category={"Danceability"}/>
-          <DiscreteSlider updateValue={setEnergy} category={"Energy"}/>
-          <DiscreteSlider updateValue={setInstrumentalness} category={"Instrumentalness"}/>
-          <DiscreteSlider updateValue={setLiveness} category={"Liveness"}/>
-          <DiscreteSlider updateValue={setSpeechiness} category={"Speechiness"}/>
-          <DiscreteSlider updateValue={setValence} category={"Valence"}/>
-        </div>
+      <div className="input-sliders">
+        <DiscreteSlider updateValue={setAcousticness} category={"Acousticness"}/>
+        <DiscreteSlider updateValue={setDanceability} category={"Danceability"}/>
+        <DiscreteSlider updateValue={setEnergy} category={"Energy"}/>
+        <DiscreteSlider updateValue={setInstrumentalness} category={"Instrumentalness"}/>
+        <DiscreteSlider updateValue={setLiveness} category={"Liveness"}/>
+        <DiscreteSlider updateValue={setSpeechiness} category={"Speechiness"}/>
+        <DiscreteSlider updateValue={setValence} category={"Valence"}/>
       </div>
     );
   };

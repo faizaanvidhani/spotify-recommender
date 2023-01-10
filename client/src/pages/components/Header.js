@@ -11,7 +11,7 @@ export default function Header() {
         try {
             const response = await axios.get('/logout');
             console.log("SUCCESS", response);
-            // navigate('/')
+            navigate('/')
         } catch (error) {
             console.log(error)
         }

@@ -46,7 +46,7 @@ def callback():
     token_info = sp_oauth.get_access_token()
     # token_info = sp_oauth.get_access_token(code)
     session[TOKEN_INFO] = token_info
-    return redirect("http://localhost:3000/#/top-tracks")
+    return redirect("http://localhost:3000/#/find-tracks")
     # return redirect(url_for('getTracks', _external=True))
 
 @app.route('/getTracks')

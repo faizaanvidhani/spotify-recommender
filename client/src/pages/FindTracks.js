@@ -1,58 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import CountrySelection from './components/CountrySelection';
 import PreferenceSelection from './components/PreferenceSelection';
-import ManuallyInputAudioFeatures from './components/ManuallyInputAudioFeatures';
-import MyCurrentTopTracks from './components/MyCurrentTopTracks';
-import Search from './components/Search';
+import Results from './components/Results';
 import '../assets/css/FindTracks.css';
 
 export default function FindTracks() {
-    const preferenceA = "CURRENT_TOP";
-    const preferenceB = "MANUALLY_INPUT";
     const [countryCode, setCountryCode] = useState(null);
     const [selectedPreference, setSelectedPreference] = useState(null);
     const [audioFeaturePreferences, setAudioFeaturePreferences] = useState([50, 50, 50, 50, 50, 50, 50]);
     const [results, setResults] = useState([]);
-    const [topTracksData, setTopTracksData] = useState([])
+    const [topTracksData, setTopTracksData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const resultsRef = useRef(null); // achieves scrolling to the results section
 
+    // resets variables when country search bar is cleared
     useEffect(() => {
-        async function fetchData() {
+       function reset() {
+            setSelectedPreference(null);
+            setAudioFeaturePreferences([50, 50, 50, 50, 50, 50, 50]);
+            setResults([]);
+        }
+        reset();
+      }, [countryCode]);
+    
+    useEffect(() => {
+        resultsRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [results]);
+
+    // fetches current top tracks when the page is first rendered
+    useEffect(() => {
+        async function fetchUserTracks() {
             try {
                 const response = await axios.get('getTracks');
                 setTopTracksData(response.data);
-                console.log("SUCCESS", response);
             } catch (error) {
                 console.log(error);
             }
         }
-        fetchData();
+        fetchUserTracks();
       }, []);
 
+    // fetches recommendations based on user's current top tracks
     const fetchPersonalizedResults = async () => {
+        setLoading(true);
         try {
             const response = await axios.get(`/search/${countryCode}`);
-            console.log("SUCCESS", response);
             setResults(response.data);
-            console.log(countryCode);
-            console.log("setting results")
-            // navigate('/')
           } catch (error) {
               console.log(error)
           }
+          setLoading(false);
         }
     
+    // fetches recommendations based on manually-inputted audio features
     const fetchManualInputAudioFeaturesResults = async () => {
+        setLoading(true);
         try {
             const response = await axios.post(`/search/manual-input/results/${countryCode}`, audioFeaturePreferences);
-            console.log("SUCCESS", response);
             setResults(response.data);
             } catch (error) {
                 console.log(error)
             }
+        setLoading(false);
         }
-
 
     return (
         <div>
@@ -66,17 +78,26 @@ export default function FindTracks() {
                         preferences.
                     </p>
                 </div>
-                <CountrySelection setCountryCode={setCountryCode}/>
-                <PreferenceSelection setSelectedPreference={setSelectedPreference} />
-                {
-                    selectedPreference != null ? (selectedPreference != preferenceA ? <ManuallyInputAudioFeatures setAudioFeaturePreferences={setAudioFeaturePreferences}/> : <MyCurrentTopTracks tracks={topTracksData}/>) : null
+                <CountrySelection 
+                setCountryCode={setCountryCode}
+                setResults={setResults}/>
+                { countryCode == null ?
+                    null :
+                    <PreferenceSelection 
+                    fetchPersonalizedResults={fetchPersonalizedResults} 
+                    fetchManualInputAudioFeaturesResults={fetchManualInputAudioFeaturesResults}
+                    loading={loading}
+                    setAudioFeaturePreferences={setAudioFeaturePreferences}
+                    setSelectedPreference={setSelectedPreference}
+                    topTracksData={topTracksData} />
                 }
-                <Search selectedPreference={selectedPreference}
-                        preferenceA={preferenceA}
-                        preferenceB={preferenceB}
-                        fetchPersonalizedResults={fetchPersonalizedResults} 
-                        fetchManualInputAudioFeaturesResults={fetchManualInputAudioFeaturesResults} 
-                        results={results}/>
+                { (results.length === 0 || countryCode == null) ?
+                    null :
+                    <Results 
+                    results={results}
+                    resultsRef={resultsRef}
+                    selectedPreference={selectedPreference} />
+                }
             </div>
         </div>
         

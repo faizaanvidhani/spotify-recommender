@@ -9,7 +9,6 @@ export default function DiscoverTracks() {
 
     useEffect(() => {
         axios.get('/getTracks').then(response => {
-            console.log("SUCCESS", response)
             setTopTracksData(response.data)
         }).catch(error => {
             console.log(error)
