@@ -2,7 +2,7 @@
 
 Recommends the latest tracks from any country around the world using the KNN algorithm.
 
-<img src="./spotify-recommender.gif" width="1000vw" height="5000"/>
+<img src="./spotify-recommender.gif" width="1000vw" height="500vh"/>
 
 ![Alt Text](https://github.com/faizaanvidhani/spotify-recommender/blob/main/spotify-recommender.gif)
 
