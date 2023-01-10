@@ -1,6 +1,6 @@
 # Diversify: A Spotify Recommender
 
-Recommends the latest tracks from any country around the world using the KNN algorithm.
+Recommends the latest tracks from any country around the world using the KNN algorithm. See below for a preview of the web application (excuse the poor GIF quality!).
 
 <img src="./spotify-recommender.gif" width="1000vw" height="500vh"/>
 
