@@ -1,14 +1,8 @@
 # Diversify: A Spotify Recommender
 
-Recommends the latest tracks from any country around the world using the KNN algorithm. See below for a preview of the web application (excuse the poor GIF quality!).
+Diversify recommends the latest tracks from any country around the world using the KNN algorithm. It displays personalized recommendations based on a user's music taste. 
 
-<img src="./spotify-recommender.gif" width="1000vw" height="400vh"/>
-
-
-
-https://user-images.githubusercontent.com/39887209/211734029-f01d91e0-7c9a-4c8c-b70d-651fe1646d0b.mp4
-
-
+https://user-images.githubusercontent.com/39887209/211734609-afccfb02-38a8-412d-b52b-99f9e384ddf0.mp4
 
 I wanted to find songs that I liked that were popular in other countries. So, I built a web app using Flask (backend) and React (frontend). 
 
