@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/spotify-recommender/static/css/main.ff60e54b.css",
+    "main.js": "/spotify-recommender/static/js/main.0ca79023.js",
+    "static/js/787.cda612ba.chunk.js": "/spotify-recommender/static/js/787.cda612ba.chunk.js",
+    "static/media/spotify-logo.svg": "/spotify-recommender/static/media/spotify-logo.ecbaa9787bed789c9b21401f97cbfd4c.svg",
+    "static/media/top-tracks-icon.svg": "/spotify-recommender/static/media/top-tracks-icon.e8f9e0e6b888f02cecab1f02eeecb5f7.svg",
+    "static/media/find-icon.svg": "/spotify-recommender/static/media/find-icon.197941f641324319cded25d962095e43.svg",
+    "index.html": "/spotify-recommender/index.html",
+    "static/media/spinner.svg": "/spotify-recommender/static/media/spinner.b6c25bfa76e5022e242745b681dce2a7.svg",
+    "static/media/play-button.svg": "/spotify-recommender/static/media/play-button.fb08d4072bbb01340cedc453257f54c3.svg",
+    "static/media/black-find-icon.svg": "/spotify-recommender/static/media/black-find-icon.c6f2d01146826e3e60eb7f00b8ddef87.svg",
+    "static/media/pause-button.svg": "/spotify-recommender/static/media/pause-button.d93ead3a15257be4fc442f9d1bf7751a.svg",
+    "main.ff60e54b.css.map": "/spotify-recommender/static/css/main.ff60e54b.css.map",
+    "main.0ca79023.js.map": "/spotify-recommender/static/js/main.0ca79023.js.map",
+    "787.cda612ba.chunk.js.map": "/spotify-recommender/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff60e54b.css",
+    "static/js/main.0ca79023.js"
+  ]
+}
