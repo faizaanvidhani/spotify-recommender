@@ -4,7 +4,7 @@ Diversify recommends the latest tracks from any country around the world using t
 
 https://user-images.githubusercontent.com/39887209/211734609-afccfb02-38a8-412d-b52b-99f9e384ddf0.mp4
 
-I wanted to find songs that I liked that were popular in other countries. So, I built a web app using Flask (backend) and React (frontend). The website is live at https://faizaanvidhani.github.io/spotify-recommender/. Since Heroku has ended its free tier, the backend has not been deployed. However, a demo of the web app running using the local development server is shown above.
+I wanted to find songs that I liked that were popular in other countries. So, I built a web app using Flask (backend) and React (frontend). The website is live at https://faizaanvidhani.github.io/spotify-recommender/. Since Heroku has ended its free tier, the backend has not been deployed. However, a demo of the web app using the local development server is shown above.
 
 Instructions for setting up and running this web application:
 
